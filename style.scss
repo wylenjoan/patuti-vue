@@ -1,0 +1,48 @@
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  background-image: url("moves/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+// #game {
+//   width: 100%;
+//   height: 100%;
+//   background-image: url("moves/background.png");
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   position: absolute;
+// }
+
+// #area {
+//   width: 590px;
+//   height: 305px;
+//   background-image: url("moves/area.png");
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   position: absolute;
+//   top: 65%;
+//   left: 50%;
+//   transform: translate(-50%, -35%);
+// }
+
+#patuti {
+  // width: 300px;
+  // height: 323px;
+  // background-image: url("moves/idle-1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
