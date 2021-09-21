@@ -11,11 +11,29 @@
     <div id="app" tabindex="0" @keydown="setMove">
       <!-- {{ message }} -->
       <div id="area"></div>
-      <div
-        id="patuti"
-        :style="{'background-image':`url(${currentImage.image})`, width: currentImage.width+'px', height: currentImage.height+'px'}
-        "
-      ></div>
+      <div id="patuti-space">
+        <div
+          id="patuti"
+          :style="{
+            'background-image':`url(${currentImage.image})`, 
+            width: currentImage.width + 'px', 
+            height: currentImage.height + 'px',
+            bottom: currentImage.bottom + 'px',
+            left: currentImage.left + 'px',
+          }"
+        ></div>
+      </div>
+      <div class="bullet-h-group">
+        <div class="bullet-h" id="bullet-h1"></div>
+        <div class="bullet-h" id="bullet-h2"></div>
+        <div class="bullet-h" id="bullet-h3"></div>
+      </div>
+
+      <div class="bullet-v-group">
+        <div class="bullet-v" id="bullet-v1"></div>
+        <div class="bullet-v" id="bullet-v2"></div>
+        <div class="bullet-v" id="bullet-v3"></div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
