@@ -145,7 +145,14 @@ var app = new Vue({
       },
       currentMove1: 0,
       currentMove2: 0,
-      speed: 200,
+      speed: 100,
+      speedList: {
+        speedWalk: 10,
+        speedIdle: 100,
+        speedJump: 50,
+        speedJump2: 400,
+        speedDock: 30,
+      },
       bulletH: [
         {
           name: "bulletH0",
@@ -248,27 +255,30 @@ var app = new Vue({
         switch (this.currentMove1) {
           // left
           case 1:
+            this.speed = this.speedList.speedWalk;
             if (this.currentImage.left > -47.5)
               if (this.currentMove2 != 1) this.currentImage.left -= 10;
             break;
 
           // right
           case 2:
+            this.speed = this.speedList.speedWalk;
             if (this.currentImage.left < 192.5)
               if (this.currentMove2 != 1) this.currentImage.left += 10;
             break;
 
           // dock
           case 3:
+            this.speed = this.speedList.speedDock;
             break;
 
           // jump
           case 4:
             if (this.currentMove2 > 3 && this.currentMove2 < 7) {
-              this.speed = 800;
+              this.speed = this.speedList.speedJump2;
               this.currentImage.bottom += 50;
             } else {
-              this.speed = 200;
+              this.speed = this.speedList.speedJump;
               this.currentImage.bottom = 140;
             }
             break;
@@ -276,7 +286,7 @@ var app = new Vue({
 
         if (this.currentMove2 === 0) {
           this.currentMove1 = 0;
-          this.speed = 200;
+          this.speed = this.speedList.speedIdle;
         }
       }, this.speed);
     },
@@ -390,6 +400,7 @@ var app = new Vue({
 
     playNow() {
       this.greeting = false;
+      document.getElementById("game-area").focus();
       this.movePatuti();
       this.shootBothSides();
     },
