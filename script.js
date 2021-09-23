@@ -191,6 +191,7 @@ var app = new Vue({
         width: 54,
       },
       life: 10,
+      greeting: true,
       gameOver: false,
       exit: false,
     };
@@ -199,7 +200,6 @@ var app = new Vue({
   methods: {
     setMove(event) {
       let key = event.key;
-      console.log(key);
       switch (key) {
         // left
         case "ArrowLeft":
@@ -245,26 +245,17 @@ var app = new Vue({
         this.currentMove2 =
           (this.currentMove2 + 1) % this.images[this.currentMove1].length;
 
-        // console.log("current height: " + this.currentImage.height);
-        // console.log("current width: " + this.currentImage.width);
-        // console.log("ref height: " + this.$refs.patuti.clientHeight);
-        // console.log("ref width: " + this.$refs.patuti.clientWidth);
-
         switch (this.currentMove1) {
           // left
           case 1:
             if (this.currentImage.left > -47.5)
               if (this.currentMove2 != 1) this.currentImage.left -= 10;
-
-            // console.log(this.currentImage.left);
             break;
 
           // right
           case 2:
             if (this.currentImage.left < 192.5)
               if (this.currentMove2 != 1) this.currentImage.left += 10;
-
-            // console.log(this.currentImage.left);
             break;
 
           // dock
@@ -287,10 +278,6 @@ var app = new Vue({
           this.currentMove1 = 0;
           this.speed = 200;
         }
-
-        // console.log("move 1: " + this.currentMove1);
-        // console.log("move 2: " + this.currentMove2);
-        // console.log("move 2: " + this.currentImage.image);
       }, this.speed);
     },
     getRandomNumber(max) {
@@ -331,7 +318,6 @@ var app = new Vue({
             this.currentBulletH.y + this.currentBulletH.height &&
           this.currentImage.y + this.currentImage.height > this.currentBulletH.y
         ) {
-          // console.log("collision");
           this.updateLife();
 
           this.bulletH[this.currentShootingH].shoot = false;
@@ -376,7 +362,6 @@ var app = new Vue({
             this.currentBulletV.y + this.currentBulletV.height &&
           this.currentImage.y + this.currentImage.height > this.currentBulletV.y
         ) {
-          // console.log("collision");
           this.updateLife();
           this.bulletV[this.currentShootingV].shoot = false;
           this.currentShootingV = -1;
@@ -393,7 +378,6 @@ var app = new Vue({
 
     updateLife() {
       this.life = this.life - 1;
-      console.log(this.life);
       if (this.life === 0) {
         this.gameOver = true;
       }
@@ -403,10 +387,11 @@ var app = new Vue({
       this.gameOver = false;
       this.life = 10;
     },
-  },
 
-  created() {
-    this.movePatuti();
-    this.shootBothSides();
+    playNow() {
+      this.greeting = false;
+      this.movePatuti();
+      this.shootBothSides();
+    },
   },
 });

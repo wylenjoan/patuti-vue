@@ -153,7 +153,7 @@ body {
   background-color: #5ed45e;
 }
 
-.gameOver {
+.modal {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -162,7 +162,7 @@ body {
   z-index: 3;
 }
 
-.gameOver .game-over-content {
+.modal .modal-content {
   width: 500px;
   height: 275px;
   margin: auto;
@@ -176,19 +176,31 @@ body {
   text-align: center;
 }
 
-.gameOver .game-over-content h1 {
+.modal .modal-content h1,
+.modal .modal-content h2,
+.modal .modal-content h3,
+.modal .modal-content h4 {
+  font-weight: normal;
+  margin: 0;
+}
+
+.modal .modal-content h1 {
   font-size: 6em;
-  font-weight: normal;
-  margin: 0;
 }
 
-.gameOver .game-over-content h2 {
+.modal .modal-content h2 {
   font-size: 3em;
-  font-weight: normal;
-  margin: 0;
 }
 
-.gameOver .game-over-content button {
+.modal .modal-content h3 {
+  font-size: 2em;
+}
+
+.modal .modal-content h4 {
+  font-size: 1.5em;
+}
+
+.modal .modal-content button {
   background-color: transparent;
   border: none;
   margin: 10px;
@@ -198,7 +210,17 @@ body {
   cursor: pointer;
 }
 
-.gameOver .game-over-content button:hover {
+.modal .modal-content button:hover {
   text-decoration: underline;
+}
+
+.modal .modal-content table {
+  text-align: left;
+  margin: auto;
+}
+
+.modal .modal-content table td {
+  padding: 0 8px;
+  font-size: 1.5em;
 }
 /*# sourceMappingURL=style.css.map */

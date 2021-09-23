@@ -128,14 +128,14 @@ body {
   }
 }
 
-.gameOver {
+.modal {
   height: 100%;
   width: 100%;
   position: absolute;
   background-image: linear-gradient(#652ce2, #ac4deb);
   z-index: 3;
 
-  .game-over-content {
+  .modal-content {
     width: 500px;
     height: 275px;
     margin: auto;
@@ -147,15 +147,24 @@ body {
     color: #98f96b;
     font-family: "VT323", monospace;
     text-align: center;
-    h1 {
-      font-size: 6em;
+    h1,
+    h2,
+    h3,
+    h4 {
       font-weight: normal;
       margin: 0;
     }
+    h1 {
+      font-size: 6em;
+    }
     h2 {
       font-size: 3em;
-      font-weight: normal;
-      margin: 0;
+    }
+    h3 {
+      font-size: 2em;
+    }
+    h4 {
+      font-size: 1.5em;
     }
     button {
       background-color: transparent;
@@ -168,6 +177,14 @@ body {
 
       &:hover {
         text-decoration: underline;
+      }
+    }
+    table {
+      text-align: left;
+      margin: auto;
+      td {
+        padding: 0 8px;
+        font-size: 1.5em;
       }
     }
   }

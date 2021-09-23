@@ -9,7 +9,34 @@
   </head>
   <body>
     <div id="app">
-      <div id="game-area" tabindex="0" @keydown="setMove" v-if="!gameOver">
+      <!--TODO: add instructions modal -->
+      <div class="modal" v-if="greeting">
+        <div class="modal-content">
+          <h1>HELLO!</h1>
+          <h4>Use arrow keys to move Patuti.</h4>
+          <table>
+            <tr>
+              <td>↑</td>
+              <td>Jump</td>
+            </tr>
+            <tr>
+              <td>↓</td>
+              <td>Dock</td>
+            </tr>
+            <tr>
+              <td>←</td>
+              <td>Move Left</td>
+            </tr>
+            <tr>
+              <td>→</td>
+              <td>Move Right</td>
+            </tr>
+          </table>
+          <button @click="playNow">PLAY NOW</button>
+        </div>
+      </div>
+
+      <div id="game-area" tabindex="0" @keydown="setMove">
         <div id="patuti-space">
           <div
             id="patuti"
@@ -81,8 +108,8 @@
         </div>
       </div>
 
-      <div class="gameOver" v-if="gameOver">
-        <div class="game-over-content">
+      <div class="modal" v-if="gameOver">
+        <div class="modal-content">
           <div v-if="!exit">
             <h1>GAME OVER</h1>
             <h2>PLAY AGAIN?</h2>
@@ -93,6 +120,7 @@
           <div class="exit" v-if="exit">
             <div class="exit-patuti"></div>
             <h1>SEE YOU NEXT TIME!</h1>
+            <h3>- patuti & wylen joan lee</h3>
           </div>
         </div>
       </div>
