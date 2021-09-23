@@ -1,10 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 body {
   overflow: hidden;
   margin: 0;
   padding: 0;
 }
 
-#app {
+#game-area {
   background-color: red;
   width: 100%;
   height: 100%;
@@ -14,27 +15,9 @@ body {
   position: absolute;
 }
 
-#area {
-  width: 295px;
-  height: 152.5px;
-  background-image: url("moves/area.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 60px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 #patuti-space {
   width: 295px;
-  height: 400px;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  height: 80%;
   margin: auto;
   position: relative;
 }
@@ -44,50 +27,178 @@ body {
   background-size: cover;
   z-index: 2;
   position: absolute;
+  margin-top: auto;
+}
+
+#patuti-space #area {
+  width: 295px;
+  height: 152.5px;
+  background-image: url("moves/area.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
 }
 
 .bullet-h-group {
-  height: 240px;
-  width: 81px;
-  display: -ms-grid;
-  display: grid;
-  grid-gap: 40px;
+  height: 400px;
+  width: 100%;
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 0;
   margin: auto;
 }
 
-.bullet-h {
+.bullet-h-group .bullet-h {
   background-image: url("moves/bullet_h.png");
-  width: 81px;
-  height: 40px;
+  width: 54px;
+  height: 27px;
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
+  position: absolute;
+  right: 0;
+}
+
+.shootH {
+  -webkit-animation: shootH 5s;
+          animation: shootH 5s;
+}
+
+@-webkit-keyframes shootH {
+  0% {
+    right: 0%;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+@keyframes shootH {
+  0% {
+    right: 0%;
+  }
+  100% {
+    right: 100%;
+  }
 }
 
 .bullet-v-group {
-  height: 82px;
-  width: 295px;
-  display: -ms-grid;
-  display: grid;
-  grid-column-gap: 87.5px;
-  grid-auto-flow: column;
-  position: absolute;
-  top: 0;
+  height: 100%;
+  width: 250px;
   right: 0;
   left: 0;
+  top: 0;
   margin: auto;
+  position: absolute;
 }
 
-.bullet-v {
+.bullet-v-group .bullet-v {
   background-image: url("moves/bullet_v.png");
-  width: 40px;
-  height: 82px;
+  width: 27px;
+  height: 54px;
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
+  position: absolute;
+  top: 0;
+}
+
+.shootV {
+  -webkit-animation: shootV 5s;
+          animation: shootV 5s;
+}
+
+@-webkit-keyframes shootV {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes shootV {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.life-wrapper {
+  background-color: #f7a0ae;
+  height: 50px;
+  width: 300px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+}
+
+.life-wrapper .life-bar-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.life-wrapper .life-bar-wrapper td {
+  border: 4px solid gray;
+}
+
+.life-wrapper .life {
+  height: 100%;
+  background-color: #5ed45e;
+}
+
+.gameOver {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#652ce2), to(#ac4deb));
+  background-image: linear-gradient(#652ce2, #ac4deb);
+  z-index: 3;
+}
+
+.gameOver .game-over-content {
+  width: 500px;
+  height: 275px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  color: #98f96b;
+  font-family: "VT323", monospace;
+  text-align: center;
+}
+
+.gameOver .game-over-content h1 {
+  font-size: 6em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.gameOver .game-over-content h2 {
+  font-size: 3em;
+  font-weight: normal;
+  margin: 0;
+}
+
+.gameOver .game-over-content button {
+  background-color: transparent;
+  border: none;
+  margin: 10px;
+  font-family: "VT323", monospace;
+  font-size: 2em;
+  color: #98f96b;
+  cursor: pointer;
+}
+
+.gameOver .game-over-content button:hover {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=style.css.map */

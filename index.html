@@ -8,31 +8,93 @@
     <title>Patuti</title>
   </head>
   <body>
-    <div id="app" tabindex="0" @keydown="setMove">
-      <!-- {{ message }} -->
-      <div id="area"></div>
-      <div id="patuti-space">
-        <div
-          id="patuti"
-          :style="{
-            'background-image':`url(${currentImage.image})`, 
-            width: currentImage.width + 'px', 
-            height: currentImage.height + 'px',
-            bottom: currentImage.bottom + 'px',
-            left: currentImage.left + 'px',
-          }"
-        ></div>
-      </div>
-      <div class="bullet-h-group">
-        <div class="bullet-h" id="bullet-h1"></div>
-        <div class="bullet-h" id="bullet-h2"></div>
-        <div class="bullet-h" id="bullet-h3"></div>
+    <div id="app">
+      <div id="game-area" tabindex="0" @keydown="setMove" v-if="!gameOver">
+        <div id="patuti-space">
+          <div
+            id="patuti"
+            ref="patuti"
+            :style="{
+              'background-image':`url(${currentImage.image})`, 
+              width: currentImage.width + 'px', 
+              height: currentImage.height + 'px',
+              bottom: currentImage.bottom + 'px',
+              left: currentImage.left + 'px',
+            }"
+          ></div>
+          <div id="area"></div>
+        </div>
+        <div class="bullet-h-group">
+          <div
+            ref="bulletH0"
+            class="bullet-h"
+            :class="{shootH: bulletH[0].shoot}"
+          ></div>
+          <div
+            ref="bulletH1"
+            class="bullet-h"
+            :class="{shootH: bulletH[1].shoot}"
+            style="top: 100px"
+          ></div>
+          <div
+            ref="bulletH2"
+            class="bullet-h"
+            :class="{shootH: bulletH[2].shoot}"
+            style="top: 200px"
+          ></div>
+        </div>
+
+        <div class="bullet-v-group">
+          <div
+            ref="bulletV0"
+            class="bullet-v"
+            :class="{shootV: bulletV[0].shoot}"
+          ></div>
+          <div
+            ref="bulletV1"
+            class="bullet-v"
+            :class="{shootV: bulletV[1].shoot}"
+            style="left: 100px"
+          ></div>
+          <div
+            ref="bulletV2"
+            class="bullet-v"
+            :class="{shootV: bulletV[2].shoot}"
+            style="left: 200px"
+          ></div>
+        </div>
+
+        <div class="life-wrapper">
+          <table class="life-bar-wrapper">
+            <td class="life-bar"></td>
+            <td class="life-bar"></td>
+            <td class="life-bar"></td>
+            <td class="life-bar"></td>
+            <td class="life-bar"></td>
+            <td class="life-bar"></td>
+            <td class="life-bar"></td>
+            <td class="life-bar"></td>
+            <td class="life-bar"></td>
+            <td class="life-bar"></td>
+          </table>
+          <div class="life" :style="{ width: life * 10 + '%' }"></div>
+        </div>
       </div>
 
-      <div class="bullet-v-group">
-        <div class="bullet-v" id="bullet-v1"></div>
-        <div class="bullet-v" id="bullet-v2"></div>
-        <div class="bullet-v" id="bullet-v3"></div>
+      <div class="gameOver" v-if="gameOver">
+        <div class="game-over-content">
+          <div v-if="!exit">
+            <h1>GAME OVER</h1>
+            <h2>PLAY AGAIN?</h2>
+            <button @click="playAgain">YES</button>
+            <button @click="exit=true">NO</button>
+          </div>
+
+          <div class="exit" v-if="exit">
+            <div class="exit-patuti"></div>
+            <h1>SEE YOU NEXT TIME!</h1>
+          </div>
+        </div>
       </div>
     </div>
 
